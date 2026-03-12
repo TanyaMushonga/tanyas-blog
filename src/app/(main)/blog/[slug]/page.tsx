@@ -20,7 +20,7 @@ type Props = {
 async function getArticleAndRelated(slug: string) {
   try {
     const articleRes = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || "https://api.tanyaradzwatmushonga.me/api"}/blog/${slug}`,
+      `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/blog/${slug}`,
       { next: { revalidate: 3600 } },
     );
 
@@ -34,7 +34,7 @@ async function getArticleAndRelated(slug: string) {
     const articleData = await articleRes.json();
     const article: Article = articleData;
     const relatedRes = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || "https://api.tanyaradzwatmushonga.me/api"}/blog?page=1&page_size=50`,
+      `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/blog?page=1&page_size=50`,
       { next: { revalidate: 3600 } },
     );
 
@@ -87,7 +87,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     // Fetch only the article for metadata, don't try to get related
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || "https://api.tanyaradzwatmushonga.me/api"}/blog/${slug}`,
+      `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/blog/${slug}`,
       { next: { revalidate: 3600 } },
     );
 

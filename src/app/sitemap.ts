@@ -8,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   do {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || "https://api.tanyaradzwatmushonga.me/api"}/blog?page=${page}&page_size=${pageSize}`
+      `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/blog?page=${page}&page_size=${pageSize}`
     );
     const data = await response.json();
     blogs = data.blogs;
@@ -30,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Fetch Collections (Series)
   const collectionsResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || "https://api.tanyaradzwatmushonga.me/api"}/collections`
+    `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/collections`
   );
   const collections: Collection[] = await collectionsResponse.json();
 

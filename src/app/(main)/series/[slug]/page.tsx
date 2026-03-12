@@ -12,7 +12,7 @@ interface SeriesPageProps {
 
 async function getCollection(slug: string): Promise<Collection | null> {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || "https://api.tanyaradzwatmushonga.me/api"}/collections/${slug}`,
+    `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/collections/${slug}`,
     {
       next: { revalidate: 3600 },
     }
@@ -39,7 +39,7 @@ async function getCollection(slug: string): Promise<Collection | null> {
 }
 
 export async function generateStaticParams() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://api.tanyaradzwatmushonga.me/api"}/collections`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/collections`);
   if (!res.ok) return [];
   const collections: Collection[] = await res.json();
   return collections.map((collection) => ({

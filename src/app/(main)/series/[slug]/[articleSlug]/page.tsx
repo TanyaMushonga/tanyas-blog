@@ -15,7 +15,7 @@ interface NestedArticlePageProps {
 }
 
 async function getArticle(slug: string): Promise<Article | null> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://api.tanyaradzwatmushonga.me/api"}/blog/${slug}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/blog/${slug}`, {
     next: { revalidate: 3600 },
   });
 
@@ -29,7 +29,7 @@ async function getArticle(slug: string): Promise<Article | null> {
 
 async function getCollection(slug: string): Promise<Collection | null> {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || "https://api.tanyaradzwatmushonga.me/api"}/collections/${slug}`,
+    `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/collections/${slug}`,
     {
       next: { revalidate: 3600 },
     },
@@ -51,7 +51,7 @@ async function getRelatedArticles(
   currentSlug: string,
 ): Promise<Article[]> {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || "https://api.tanyaradzwatmushonga.me/api"}/blog?page=1&page_size=50`,
+    `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/blog?page=1&page_size=50`,
     {
       next: { revalidate: 3600 },
     },
@@ -68,7 +68,7 @@ async function getRelatedArticles(
 }
 
 export async function generateStaticParams() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://api.tanyaradzwatmushonga.me/api"}/collections`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/collections`);
   if (!res.ok) return [];
   const collections: Collection[] = await res.json();
 
