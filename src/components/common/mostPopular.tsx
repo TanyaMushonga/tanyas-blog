@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import { Pin } from "lucide-react";
 import { formatDate, getRandomArticles } from "@/lib/utils";
@@ -29,19 +28,6 @@ function Mostpopular({ mostPopular }: { mostPopular: Article[] }) {
                 </div>
               </div>
             </div>
-            <Image
-              src={article?.coverImgUrl || ""}
-              width={120}
-              height={50}
-              alt="article cover"
-              className="rounded-md"
-              priority
-              loading="eager"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              placeholder="blur"
-              blurDataURL="/placeholderblur.png"
-              style={{ aspectRatio: "3 / 1" }}
-            />
           </RouteLayout>
         ))}
       </div>

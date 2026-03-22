@@ -16,7 +16,7 @@ interface ArticleProps {
 function Article({
   blog,
   className = "",
-  showImage = true,
+  showImage = false,
   variant = "card",
 }: ArticleProps) {
   const router = useRouter();
@@ -56,7 +56,7 @@ function Article({
             </span>
           </div>
         </div>
-        <ArrowUpRight className="h-5 w-5 text-gray-600 group-hover:text-cyan-400 transition-all duration-200 flex-shrink-0 mt-1" />
+        <ArrowUpRight className="h-5 w-5 text-gray-600 group-hover:text-cyan-400 transition-all duration-200 shrink-0 mt-1" />
       </div>
     );
   }

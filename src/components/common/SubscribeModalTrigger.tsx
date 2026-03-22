@@ -16,18 +16,24 @@ export default function SubscribeModalTrigger({
   const { scrollYProgress } = useScroll();
 
   useEffect(() => {
+    // Check if user has already subscribed globally
+    const isSubscribed = localStorage.getItem("user_subscribed") === "true";
+    
     // Check if it has already been triggered for this post in this session
     const triggeredPosts = JSON.parse(
       sessionStorage.getItem("subscribed_posts") || "[]"
     );
-    if (triggeredPosts.includes(slug)) {
+    if (triggeredPosts.includes(slug) || isSubscribed) {
       setHasTriggered(true);
     }
   }, [slug]);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    // Check global subscription status
+    const isSubscribed = localStorage.getItem("user_subscribed") === "true";
+
     // Trigger when scrolled 25% (0.25)
-    if (latest >= 0.25 && !hasTriggered && !isOpen) {
+    if (latest >= 0.25 && !hasTriggered && !isOpen && !isSubscribed) {
       setIsOpen(true);
       setHasTriggered(true);
 

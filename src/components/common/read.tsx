@@ -67,21 +67,6 @@ function Read({ article }: { article: Article }) {
           </div>
         </div>
       </header>
-      {/* Cover Image */}
-      {article?.coverImgUrl && (
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-12 shadow-2xl border border-border/30">
-          <Image
-            src={article?.coverImgUrl}
-            alt={article.title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 1200px) 100vw"
-            priority
-            quality={100}
-          />
-        </div>
-      )}
-
       {/* Main Content - Utilizing the Updated Global CSS .prose */}
       <article className="prose prose-slate prose-invert max-w-none mb-12">
         <div dangerouslySetInnerHTML={{ __html: article?.content || "" }} />

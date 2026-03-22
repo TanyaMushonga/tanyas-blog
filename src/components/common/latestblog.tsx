@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import { Timer, CalendarDays } from "lucide-react";
 import { formatDate } from "@/lib/utils";
@@ -12,23 +11,7 @@ function Latestblog({ latestBlog }: { latestBlog: Article }) {
       className="group relative flex md:flex-row flex-col gap-8 items-start pb-10 cursor-pointer border-b border-border/50"
       link={`/blog/${latestBlog.slug}`}
     >
-      <div className="w-full md:w-1/2 overflow-hidden rounded-xl border border-border/50 shadow-2xl">
-        <Image
-          src={latestBlog.coverImgUrl}
-          width={800}
-          height={500}
-          alt={latestBlog.title}
-          className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-          priority
-          loading="eager"
-          sizes="(max-width: 768px) 100vw, 50vw"
-          placeholder="blur"
-          blurDataURL="/placeholderblur.png"
-          style={{ aspectRatio: "16/9" }}
-        />
-      </div>
-
-      <div className="flex flex-col gap-4 w-full md:w-1/2 justify-center">
+      <div className="flex flex-col gap-4 w-full justify-center">
         <div className="inline-flex items-center gap-2">
           <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider">
             Latest

@@ -28,6 +28,9 @@ function SUbscribe() {
       const message = await subscribe(email);
       setMessage(message);
       setEmail("");
+      
+      // Persist subscription status
+      localStorage.setItem("user_subscribed", "true");
     } catch {
       setErrors("An unexpected error occurred");
     } finally {

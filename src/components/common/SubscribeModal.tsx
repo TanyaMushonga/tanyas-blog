@@ -44,6 +44,9 @@ export default function SubscribeModal({
       const resMessage = await subscribe(email);
       setMessage(resMessage);
       setEmail("");
+      
+      // Persist subscription status
+      localStorage.setItem("user_subscribed", "true");
 
       // Close modal after success after a short delay
       setTimeout(() => {
