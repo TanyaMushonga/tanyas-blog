@@ -1,14 +1,15 @@
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const pageSize = 10;
+  const pageSize = 100;
   let page = 1;
   let allBlogs: Article[] = [];
   let blogs: Article[] = [];
 
   do {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/blog?page=${page}&page_size=${pageSize}`
+      `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/blog?page=${page}&page_size=${pageSize}`,
+      { next: { revalidate: false } }
     );
     const data = await response.json();
     blogs = data.blogs;
@@ -30,7 +31,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Fetch Collections (Series)
   const collectionsResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/collections`
+    `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/collections`,
+    { next: { revalidate: false } }
   );
   const collections: Collection[] = await collectionsResponse.json();
 

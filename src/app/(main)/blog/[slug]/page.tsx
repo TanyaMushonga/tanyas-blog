@@ -60,7 +60,7 @@ async function getArticleAndRelated(slug: string) {
 export async function generateStaticParams() {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/blog?page=1&page_size=50`,
+      `${process.env.NEXT_PUBLIC_API_URL}/blog?page=1&page_size=100`,
       { next: { revalidate: false } },
     );
 
