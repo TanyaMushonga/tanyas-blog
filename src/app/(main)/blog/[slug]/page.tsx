@@ -10,7 +10,7 @@ import SubscribeModalTrigger from "@/components/common/SubscribeModalTrigger";
 
 const Read = React.lazy(() => import("@/components/common/read"));
 
-export const revalidate = 3600;
+export const revalidate = false;
 export const dynamicParams = true;
 
 type Props = {
@@ -21,7 +21,7 @@ async function getArticleAndRelated(slug: string) {
   try {
     const articleRes = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/blog/${slug}`,
-      { next: { revalidate: 3600 } },
+      { next: { revalidate: false } },
     );
 
     if (!articleRes.ok) {
@@ -35,7 +35,7 @@ async function getArticleAndRelated(slug: string) {
     const article: Article = articleData;
     const relatedRes = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/blog?page=1&page_size=50`,
-      { next: { revalidate: 3600 } },
+      { next: { revalidate: false } },
     );
 
     let related: Article[] = [];
@@ -61,7 +61,7 @@ export async function generateStaticParams() {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/blog?page=1&page_size=50`,
-      { next: { revalidate: 3600 } },
+      { next: { revalidate: false } },
     );
 
     if (!response.ok) {
@@ -88,7 +88,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // Fetch only the article for metadata, don't try to get related
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/blog/${slug}`,
-      { next: { revalidate: 3600 } },
+      { next: { revalidate: false } },
     );
 
     if (!response.ok) {

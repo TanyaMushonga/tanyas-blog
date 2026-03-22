@@ -10,7 +10,7 @@ export default async function Navbar() {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/blog?page=1&page_size=50`,
-      { next: { revalidate: 3600 } }
+      { next: { revalidate: false } }
     );
 
     if (res.ok) {

@@ -13,7 +13,7 @@ async function getArticles() {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/blog?page=1&page_size=12`,
       {
-        next: { revalidate: 3600 },
+        next: { revalidate: false },
       }
     );
     if (!res.ok) throw new Error("Failed to fetch");
@@ -28,7 +28,7 @@ async function getArticles() {
 async function getCollections() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: false },
     });
     if (!res.ok) throw new Error("Failed to fetch collections");
     return res.json();

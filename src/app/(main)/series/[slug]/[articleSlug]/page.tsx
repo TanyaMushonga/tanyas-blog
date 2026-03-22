@@ -32,7 +32,7 @@ async function getCollection(slug: string): Promise<Collection | null> {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/collections/${slug}`,
       {
-        next: { revalidate: 3600 },
+        next: { revalidate: false },
       },
     );
 

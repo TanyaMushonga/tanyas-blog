@@ -3,11 +3,11 @@ import { Metadata } from "next";
 import SeriesCard from "@/components/series/SeriesCard";
 import { BookOpen } from "lucide-react";
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = false; // Indefinite caching
 
 async function getCollections() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://console.tanyaradzwatmushonga.me/api"}/collections`, {
-    next: { revalidate: 3600 },
+    next: { revalidate: false },
   });
 
   if (!res.ok) {
