@@ -112,7 +112,7 @@ export default async function SeriesRoadmapPage({ params }: SeriesPageProps) {
     <div className="container mx-auto px-4 py-20">
       <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
         {/* Sidebar / Info Section */}
-        <aside className="lg:w-1/3 lg:sticky lg:top-24 h-fit">
+        <aside className="lg:w-1/3 lg:sticky lg:top-16 h-fit max-h-[calc(100vh-6rem)] overflow-y-auto no-visible-scrollbar pe-1">
           <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-border/50 shadow-2xl mb-8">
             {collection.coverImgUrl ? (
               <Image
@@ -129,8 +129,8 @@ export default async function SeriesRoadmapPage({ params }: SeriesPageProps) {
             )}
           </div>
 
-          <div className="space-y-6">
-            <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+          <div className="space-y-3">
+            <h1 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
               {collection.name}
             </h1>
 
@@ -138,7 +138,7 @@ export default async function SeriesRoadmapPage({ params }: SeriesPageProps) {
               {collection.description}
             </p>
 
-            <div className="flex flex-col gap-4 border-t border-border/50 pt-8 mt-8">
+            <div className="flex flex-col gap-4 border-t border-border/50 pt-2">
               <div className="flex items-center gap-3 text-sm text-slate-400">
                 <Calendar className="h-4 w-4 text-primary" />
                 <span suppressHydrationWarning>
