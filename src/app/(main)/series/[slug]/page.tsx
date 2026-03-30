@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import RoadmapList from "@/components/series/RoadmapList";
+import SeriesSubscribeCTA from "@/components/series/SeriesSubscribeCTA";
 import { BookOpen, Calendar } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 
@@ -149,6 +150,11 @@ export default async function SeriesRoadmapPage({ params }: SeriesPageProps) {
                 <span>{collection.articles?.length || 0} Modules</span>
               </div>
             </div>
+
+            <SeriesSubscribeCTA
+              seriesName={collection.name}
+              className="mt-8"
+            />
           </div>
         </aside>
 
